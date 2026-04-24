@@ -1,17 +1,15 @@
-//your JS code here. If required.
 function manipulateData() {
   const outputDiv = document.getElementById("output");
 
-  // Initial Promise (3 sec delay)
-  new Promise((resolve) => {
+  // ADDED: 'return' keyword here so the test runner can await the full chain
+  return new Promise((resolve) => {
     setTimeout(() => {
       resolve([1, 2, 3, 4]);
-    }, 3000);
+    }, 3000); // Initial 3 sec delay
   })
-
     // First Transformation: Filter even numbers
     .then((arr) => {
-      const evenNumbers = arr.filter(num => num % 2 === 0);
+      const evenNumbers = arr.filter((num) => num % 2 === 0);
 
       return new Promise((resolve) => {
         setTimeout(() => {
@@ -20,10 +18,9 @@ function manipulateData() {
         }, 1000); // 1 sec delay
       });
     })
-
     // Second Transformation: Multiply by 2
     .then((evenNumbers) => {
-      const doubled = evenNumbers.map(num => num * 2);
+      const doubled = evenNumbers.map((num) => num * 2);
 
       return new Promise((resolve) => {
         setTimeout(() => {
